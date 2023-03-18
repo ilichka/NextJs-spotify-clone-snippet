@@ -125,3 +125,36 @@ Then choose connection method. Select connect your application
 ![](cluster-connection.png)
 
 And then copy url from window.
+
+To use schemas we have created use `@InjectModel`:
+
+```typescript
+ constructor(@InjectModel(Track.name) private trackModel: Model<TrackDocument>,
+                @InjectModel(Comment.name) private commentModel: Model<CommentDocument>,) {}
+```
+
+To get not ids in array, but full comments on current request call `.populate`:
+
+```typescript
+async getOne(id: ObjectId): Promise<Track> {
+        const track = await this.trackModel.findById(id).populate('comments');
+        return track
+    }
+```
+
+## Static!
+
+To upload files in nestjs use this syntax:
+
+```typescript
+@UseInterceptors(FileFieldsInterceptor([
+        { name: 'picture', maxCount: 1 },
+        { name: 'audio', maxCount: 1 },
+    ]))
+```
+
+To work with files we create `file.service`.
+
+### `npm install uuid`
+
+### `npm install --save @nestjs/serve-static`
