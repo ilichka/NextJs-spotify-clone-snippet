@@ -42,3 +42,7 @@ Install MUI
 
 #### `npm install @mui/material @emotion/react @emotion/styled`
 #### `npm install @mui/icons-material`
+
+To work with redux and ssr install:
+
+### `npm install next-redux-wrapper @types/react-redux @reduxjs/toolkit react-redux`
